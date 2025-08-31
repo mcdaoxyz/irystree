@@ -1,0 +1,231 @@
+/* Custom styles for ConnectWallet component */
+
+/* RainbowKit Modal Improvements */
+[data-rk] {
+  --rk-colors-accentColor: #8b5cf6;
+  --rk-colors-accentColorForeground: #ffffff;
+  --rk-colors-actionButtonBorder: #e5e7eb;
+  --rk-colors-actionButtonBorderMobile: #e5e7eb;
+  --rk-colors-actionButtonSecondaryBackground: #f9fafb;
+  --rk-colors-connectButtonBackground: #8b5cf6;
+  --rk-colors-connectButtonBackgroundError: #ef4444;
+  --rk-colors-connectButtonInnerBackground: #ffffff;
+  --rk-colors-connectButtonText: #ffffff;
+  --rk-colors-connectButtonTextError: #ffffff;
+  --rk-colors-connectionIndicator: #10b981;
+  --rk-colors-error: #ef4444;
+  --rk-colors-generalBorder: #e5e7eb;
+  --rk-colors-generalBorderDim: #f3f4f6;
+  --rk-colors-loadingScreen: #ffffff;
+  --rk-colors-loadingScreenText: #6b7280;
+  --rk-colors-logo: #8b5cf6;
+  --rk-colors-menuBackground: #ffffff;
+  --rk-colors-menuText: #374151;
+  --rk-colors-modalBackdrop: rgba(0, 0, 0, 0.5);
+  --rk-colors-modalBackground: #ffffff;
+  --rk-colors-modalBorder: #e5e7eb;
+  --rk-colors-modalText: #374151;
+  --rk-colors-modalTextDim: #6b7280;
+  --rk-colors-modalTextSecondary: #9ca3af;
+  --rk-colors-profileAction: #f3f4f6;
+  --rk-colors-profileActionHover: #e5e7eb;
+  --rk-colors-profileForeground: #f9fafb;
+  --rk-colors-selectedOptionBorder: #8b5cf6;
+  --rk-colors-standby: #f59e0b;
+}
+
+/* Custom wallet button styles */
+.wallet-connect-button {
+  background: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);
+  border: none;
+  border-radius: 12px;
+  padding: 12px 24px;
+  font-weight: 600;
+  font-size: 14px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 200px;
+  position: relative;
+  z-index: 10;
+}
+
+.wallet-connect-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(139, 92, 246, 0.4);
+}
+
+.wallet-connect-button:active {
+  transform: translateY(0);
+}
+
+.wallet-connect-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Account dropdown styles */
+.account-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e5e7eb;
+  min-width: 280px;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.2s ease;
+}
+
+.account-dropdown.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.account-dropdown-header {
+  padding: 16px;
+  border-bottom: 1px solid #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.account-dropdown-content {
+  padding: 16px;
+}
+
+.account-info {
+  background: #f9fafb;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.account-address {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 12px;
+  color: #374151;
+  word-break: break-all;
+}
+
+.account-balance {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+  margin-top: 4px;
+}
+
+.account-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.account-action-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: none;
+  background: transparent;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  text-align: left;
+  width: 100%;
+  color: #374151;
+}
+
+.account-action-button:hover {
+  background: #f3f4f6;
+}
+
+.account-action-button.danger {
+  color: #dc2626;
+}
+
+.account-action-button.danger:hover {
+  background: #fef2f2;
+}
+
+/* Chain selector styles */
+.chain-selector {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.chain-selector:hover {
+  background: #f3f4f6;
+  border-color: #d1d5db;
+}
+
+.chain-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.chain-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Wallet dropdown container */
+.wallet-dropdown-container {
+  position: relative;
+  z-index: 50;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .account-dropdown {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 320px;
+    margin: 0;
+  }
+  
+  .wallet-connect-button {
+    padding: 10px 20px;
+    font-size: 13px;
+    min-width: 180px;
+  }
+}
+
+/* Animation for copy feedback */
+.copy-feedback {
+  animation: copyPulse 0.3s ease-in-out;
+}
+
+@keyframes copyPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}

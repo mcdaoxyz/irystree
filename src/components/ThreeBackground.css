@@ -1,0 +1,178 @@
+/* Enhanced ThreeBackground Component Styles */
+.three-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -10;
+  pointer-events: none;
+  overflow: hidden;
+  
+  /* Enhanced performance optimizations */
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
+  perspective: 1000px;
+  
+  /* GPU acceleration */
+  transform-style: preserve-3d;
+  
+  /* Smooth transitions */
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.three-background canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  
+  /* Enhanced rendering quality */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  
+  /* Prevent canvas selection */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  
+  /* Smooth opacity transitions */
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Enhanced responsive optimizations */
+@media (max-width: 1024px) {
+  .three-background {
+    /* Slightly reduce complexity on tablets */
+    opacity: 0.9;
+  }
+}
+
+@media (max-width: 768px) {
+  .three-background {
+    /* Reduce complexity on mobile for better performance */
+    opacity: 0.8;
+    
+    /* Reduce animation intensity on mobile */
+    animation-duration: 1.5s;
+  }
+  
+  .three-background canvas {
+    /* Optimize rendering for mobile */
+    image-rendering: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .three-background {
+    /* Further reduce on very small screens */
+    opacity: 0.7;
+  }
+}
+
+/* Ultra-wide screen optimizations */
+@media (min-width: 1920px) {
+  .three-background {
+    /* Enhanced quality for large screens */
+    opacity: 1;
+  }
+}
+
+/* High DPI display optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .three-background canvas {
+    /* Ensure crisp rendering on high DPI displays */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Retina display specific optimizations */
+@media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 288dpi) {
+  .three-background {
+    /* Optimize for very high DPI displays */
+    transform: translateZ(0) scale(1.001);
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .three-background {
+    opacity: 0.9;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .three-background {
+    animation: none;
+    transition: none;
+  }
+  
+  .three-background canvas {
+    transition: none;
+  }
+}
+
+/* Ensure proper layering and isolation */
+.three-background {
+  isolation: isolate;
+  contain: layout style paint;
+}
+
+/* Enhanced fallback gradient with animated background */
+.three-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(102, 126, 234, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(118, 75, 162, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(6, 182, 212, 0.1) 0%, transparent 50%),
+    linear-gradient(135deg, 
+      rgba(102, 126, 234, 0.05) 0%, 
+      rgba(118, 75, 162, 0.05) 25%,
+      rgba(6, 182, 212, 0.05) 50%,
+      rgba(16, 185, 129, 0.05) 75%,
+      rgba(245, 158, 11, 0.05) 100%);
+  z-index: -1;
+  animation: gradientShift 20s ease-in-out infinite;
+}
+
+/* Animated gradient fallback */
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+    transform: scale(1);
+  }
+  50% {
+    background-position: 100% 50%;
+    transform: scale(1.05);
+  }
+}
+
+/* Hide fallback when canvas is loaded */
+.three-background:has(canvas) .three-background::before {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+
+/* Loading state */
+.three-background.loading {
+  opacity: 0.5;
+}
+
+.three-background.loaded {
+  opacity: 1;
+}
+
+/* Performance hint for browsers */
+.three-background {
+  content-visibility: auto;
+  contain-intrinsic-size: 100vw 100vh;
+}

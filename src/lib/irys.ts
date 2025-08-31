@@ -1,0 +1,1 @@
+export type { LinktreeData, Link, SocialLink, Theme, ContactInfo, Location } from './irys-minimal'; 
